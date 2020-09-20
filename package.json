@@ -1,0 +1,31 @@
+{
+  "name": "@bago2k4/medium-editor-media-picker",
+  "version": "1.0.0",
+  "description": "An extension for yabwe/medium-editor used to inline rich media content in the editor node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bago2k4/medium-editor-media-picker.git"
+  },
+  "keywords": [
+    "medium-editor",
+    "yabwe/medium-editor",
+    "ME",
+    "MediumEditor",
+    "MediaPicker",
+    "media-picker",
+    "inline-media-picker"
+  ],
+  "author": "Iacopo Carraro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bago2k4/medium-editor-media-picker/issues"
+  },
+  "homepage": "https://github.com/bago2k4/medium-editor-media-picker#readme",
+  "dependencies": {
+    "medium-editor": "^5.23.3"
+  }
+}
