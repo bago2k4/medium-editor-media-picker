@@ -1,4 +1,4 @@
-import {MediumEditor} from "medium-editor";
+import {default as MediumEditor} from "medium-editor";
 
 function log(){
   // var args = Array.prototype.slice.call(arguments);
