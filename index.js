@@ -1,4 +1,5 @@
-import {default as MediumEditor} from "medium-editor";
+import MediumEditor from "medium-editor";
+import {saveSelection, restoreSelection, removeMarkers} from "@rangy/selectionsaverestore";
 
 function log(){
   // var args = Array.prototype.slice.call(arguments);
@@ -65,7 +66,6 @@ var MediaPicker = MediumEditor.Extension.extend({
   },
 
   init: function(){
-    rangy.init();
     var editor = this.getEditorElements()[0];
     // Create picker
     if (this.inlinePlusButtonOptions.inlineButtons) {
@@ -306,7 +306,7 @@ var MediaPicker = MediumEditor.Extension.extend({
     $(event.target).tooltip("hide");
 
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (!this.base.getFocusedElement()) {
@@ -364,7 +364,7 @@ var MediaPicker = MediumEditor.Extension.extend({
 
   addImage: function(photoUrl, photoThumbnail, width, height, mediaType){
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (photoUrl) {
@@ -442,7 +442,7 @@ var MediaPicker = MediumEditor.Extension.extend({
   addPoll: function(pollId) {
     log("addPoll", pollId);
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (pollId) {
@@ -519,7 +519,7 @@ var MediaPicker = MediumEditor.Extension.extend({
   addVideo: function(videoUrl, videoType, videoId, videoThumbnail) {
     log("addVideo", videoUrl, videoType, videoId, videoThumbnail);
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (videoUrl) {
@@ -581,7 +581,7 @@ var MediaPicker = MediumEditor.Extension.extend({
   addChart: function(chartUrl, chartId, chartThumbnail) {
     log("addChart", chartUrl, chartId, chartThumbnail);
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (chartUrl) {
@@ -642,7 +642,7 @@ var MediaPicker = MediumEditor.Extension.extend({
   addAttachment: function(attachmentUrl, attachmentData){
     log("addAttachment", attachmentUrl, attachmentData);
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
       this._lastSelection = undefined;
     }
     if (attachmentUrl) {
@@ -732,7 +732,7 @@ var MediaPicker = MediumEditor.Extension.extend({
     $(event.target).tooltip("hide");
 
     if (this._lastSelection) {
-      rangy.restoreSelection(this._lastSelection);
+      restoreSelection(this._lastSelection);
     }
     // 2 cases: it's directly the div.medium-editor or it's a p already
     if (!this.base.getFocusedElement()) {
@@ -845,7 +845,7 @@ var MediaPicker = MediumEditor.Extension.extend({
     // markers in the body that are not needed
     this.internalRemoveSelection();
     // Save the current selection
-    this._lastSelection = rangy.saveSelection();
+    this._lastSelection = saveSelection();
     // Unfocus the field
     this.getEditorElements().forEach(function(el){
       el.blur();
@@ -855,7 +855,7 @@ var MediaPicker = MediumEditor.Extension.extend({
   internalRemoveSelection: function() {
     // Remove the previous saved selection markers if any
     if (this._lastSelection) {
-      rangy.removeMarkers(this._lastSelection);
+      removeMarkers(this._lastSelection);
       this._lastSelection = undefined;
     }
   },

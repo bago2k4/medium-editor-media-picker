@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/bago2k4/medium-editor-media-picker#readme",
   "dependencies": {
+    "@rangy/selectionsaverestore": "^2.1.0",
     "medium-editor": "^5.23.3"
   }
 }
